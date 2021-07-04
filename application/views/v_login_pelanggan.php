@@ -6,7 +6,7 @@
 		<div class=" register-box">
 			<div class="card">
 				<div class="card-body register-card-body">
-					<p class="login-box-msg">Login Pelanggan</p>
+					<p class="login-box-msg">Login Akun Member</p>
 
 					<?php
 					echo validation_errors('<div class="alert alert-warning alert-dismissible">
