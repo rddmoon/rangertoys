@@ -83,7 +83,7 @@
 																					echo "active";
 																				} ?>">
 								<i class="nav-icon fas fa-user"></i>
-								<p> User </p>
+								<p> Karyawan </p>
 							</a>
 						</li>
 						<li class="nav-item">

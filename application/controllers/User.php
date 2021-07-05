@@ -15,7 +15,7 @@ class User extends CI_Controller
 	public function index($offset = 0)
 	{
 		$data = array(
-			'title' => 'User',
+			'title' => 'Karyawan',
 			'user'	=> $this->m_user->get_all_data(),
 			'isi' => 'v_user',
 		);

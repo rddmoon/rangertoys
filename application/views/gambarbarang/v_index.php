@@ -42,7 +42,7 @@
 									<h5><?= $value->total_gambar ?></h5>
 								</span></td>
 							<td class="text-center">
-								<a href="<?= base_url('gambarbarang/add/' . $value->id_barang) ?>" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add Gambar</a>
+								<a href="<?= base_url('gambarbarang/add/' . $value->id_barang) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit Gambar</a>
 							</td>
 						</tr>
 					<?php } ?>

@@ -29,9 +29,9 @@
 					</ul>
 				</li>
 
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a href="<?= base_url('about') ?>" class="nav-link">About Us</a>
-				</li>
+				</li> -->
 
 			</ul>
 
@@ -60,7 +60,7 @@
 						</a>
 						<div class="dropdown-divider"></div>
 						<a href="<?= base_url('pesanan_saya') ?>" class="dropdown-item">
-							<i class="fas fa-shopping-cart mr-2"></i>Pesanan Saya
+							<i class="fas fa-box mr-2"></i>Pesanan Saya
 						</a>
 						<div class="dropdown-divider"></div>
 						<a href="<?= base_url('pelanggan/logout')  ?>" class="dropdown-item dropdown-footer">Log Out</a>
