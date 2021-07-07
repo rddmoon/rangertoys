@@ -26,6 +26,9 @@
 					<li class="nav-item">
 						<a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill" href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">Selesai</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="custom-tabs-four-cancel-tab" data-toggle="pill" href="#custom-tabs-four-cancel" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">Dibatalkan</a>
+					</li>
 				</ul>
 			</div>
 			<div class="card-body">
@@ -59,8 +62,9 @@
 										<?php } ?>
 									</td>
 									<td>
-										<?php if ($value->status_bayar == 0) { ?>
+										<?php if ($value->status_bayar == 0 ) { ?>
 											<a href="<?= base_url('pesanan_saya/bayar/' . $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">Bayar</a>
+											<button data-toggle="modal" data-target="#dibatalkan<?= $value->id_transaksi ?>" class="btn btn-danger btn-sm btn-flat">Batalkan</button>
 										<?php } ?>
 
 									</td>
@@ -164,12 +168,63 @@
 							<?php } ?>
 						</table>
 					</div>
+					<div class="tab-pane fade" id="custom-tabs-four-cancel" role="tabpanel" aria-labelledby="custom-tabs-four-cancel-tab">
+						<table class="table">
+							<tr>
+								<th>No Order</th>
+								<th>Tanggal</th>
+								<th>Expedisi</th>
+								<th>Total Bayar</th>
+
+							</tr>
+							<?php foreach ($dibatalkan as $key => $value) { ?>
+								<tr>
+									<td><?= $value->no_order ?></td>
+									<td><?= $value->tgl_order ?></td>
+									<td>
+										<b><?= $value->expedisi ?></b><br>
+										Paket : <?= $value->paket ?><br>
+										Ongkir : <?= number_format($value->ongkir, 0) ?>
+									</td>
+									<td>
+										<b>Rp.<?= number_format($value->total_bayar, 0) ?></b><br>
+										<span class="badge badge-danger">Dibatalkan</span><br>
+									</td>
+								</tr>
+							<?php } ?>
+						</table>
+					</div>
 				</div>
 			</div>
 			<!-- /.card -->
 		</div>
 	</div>
 </div>
+
+<?php foreach ($belum_bayar as $key => $value) { ?>
+	<div class="modal fade" id="dibatalkan<?= $value->id_transaksi ?>">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Pesanan Dibatalkan</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Apakah Anda Yakin Akan Membatalkan Pesanan...?
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+					<a href="<?= base_url('pesanan_saya/dibatalkan/' . $value->id_transaksi) ?>" class="btn btn-danger">Batalkan</a>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+<?php } ?>
 
 <?php foreach ($dikirim as $key => $value) { ?>
 	<div class="modal fade" id="diterima<?= $value->id_transaksi ?>">

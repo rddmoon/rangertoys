@@ -47,9 +47,10 @@ class Home extends CI_Controller
 	{
 		$data = array(
 			'title' => 'About Us',
+			'seting' => $this->m_home->about_us(),
 			'isi' => 'v_about',
 		);
-		$this->load->view('layout/v_wrapper_frontend', $data, FALSE);
+		$this->load->view('layout/v_wrapper_frontend_nologo', $data, FALSE);
 	}
 
 	public function detail_barang($id_barang)

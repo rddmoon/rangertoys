@@ -21,6 +21,7 @@ class Pesanan_saya extends CI_Controller
 			'diproses' => $this->m_transaksi->diproses(),
 			'dikirim' => $this->m_transaksi->dikirim(),
 			'selesai' => $this->m_transaksi->selesai(),
+			'dibatalkan' => $this->m_transaksi->dibatalkan(),
 			'isi' => 'v_pesanan_saya',
 		);
 		$this->load->view('layout/v_wrapper_frontend', $data, FALSE);
@@ -82,7 +83,18 @@ class Pesanan_saya extends CI_Controller
 			'status_order' => '3'
 		);
 		$this->m_pesanan_masuk->update_order($data);
-		$this->session->set_flashdata('pesan', 'Pesanan Telah diterima !!!');
+		$this->session->set_flashdata('pesan', 'Pesanan Telah diterima');
+		redirect('pesanan_saya');
+	}
+
+	public function dibatalkan($id_transaksi)
+	{
+		$data = array(
+			'id_transaksi' => $id_transaksi,
+			'status_order' => '4'
+		);
+		$this->m_pesanan_masuk->update_order($data);
+		$this->session->set_flashdata('pesan', 'Pesanan dibatalkan');
 		redirect('pesanan_saya');
 	}
 }

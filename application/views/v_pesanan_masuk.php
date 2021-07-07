@@ -25,6 +25,9 @@
 				<li class="nav-item">
 					<a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill" href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">Selesai</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="custom-tabs-four-cancel-tab" data-toggle="pill" href="#custom-tabs-four-cancel" role="tab" aria-controls="custom-tabs-four-cancel" aria-selected="false">Dibatalkan</a>
+				</li>
 			</ul>
 		</div>
 		<div class="card-body">
@@ -62,6 +65,7 @@
 									<?= $value->hp_penerima ?><br>
 									<?= $value->alamat ?><br>
 									<?= $value->kota ?>, <?= $value->provinsi ?>, <?= $value->kode_pos ?>.<br>
+									<!-- <button class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#detail<?= $value->id_transaksi ?>">Detail</button> -->
 								</td>
 								<td>
 									<?php if ($value->status_bayar == 1) { ?>
@@ -195,6 +199,32 @@
 							</tr>
 						<?php } ?>
 
+					</table>
+				</div>
+				<div class="tab-pane fade" id="custom-tabs-four-cancel" role="tabpanel" aria-labelledby="custom-tabs-four-cancel-tab">
+					<table class="table">
+						<tr>
+							<th>No Order</th>
+							<th>Tanggal</th>
+							<th>Expedisi</th>
+							<th>Total Bayar</th>
+
+						</tr>
+						<?php foreach ($dibatalkan as $key => $value) { ?>
+							<tr>
+								<td><?= $value->no_order ?></td>
+								<td><?= $value->tgl_order ?></td>
+								<td>
+									<b><?= $value->expedisi ?></b><br>
+									Paket : <?= $value->paket ?><br>
+									Ongkir : <?= number_format($value->ongkir, 0) ?>
+								</td>
+								<td>
+									<b>Rp.<?= number_format($value->total_bayar, 0) ?></b><br>
+									<span class="badge badge-danger">Dibatalkan</span><br>
+								</td>
+							</tr>
+						<?php } ?>
 					</table>
 				</div>
 			</div>
